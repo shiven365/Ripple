@@ -55,4 +55,4 @@ jobs:
         run: |
           # The URL below is stored securely in GitHub Secrets. 
           # You will need to paste the actual Deploy Hook URL from your Render dashboard into the secret RENDER_DEPLOY_HOOK_NOTIFICATION
-          curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_NOTIFICATION }}
+          if [ -z "${{ secrets.RENDER_DEPLOY_HOOK_NOTIFICATION }}" ]; then echo "No deploy hook configured yet. Skipping."; else curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_NOTIFICATION }}; fi
