@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notification Test Client</title>
+    <script src="https://cdn.socket.io/4.7.4/socket.io.min.js"></script>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        #log { background: #f4f4f4; padding: 10px; border: 1px solid #ddd; height: 300px; overflow-y: scroll; font-family: monospace; }
+        .notification { margin-bottom: 10px; padding: 10px; background: #e3f2fd; border-left: 4px solid #2196f3; }
+    </style>
+</head>
+<body>
+    <h2>Socket.IO Notification Client</h2>
+    <div>
+        <label>User ID:</label>
+        <input type="text" id="userId" value="11111111-2222-3333-4444-555555555555" size="40">
+        <button onclick="connect()">Connect & Authenticate</button>
+    </div>
+    <br>
+    <div id="log"></div>
+
+    <script>
+        let socket;
+        function logMsg(msg) {
+            const el = document.createElement('div');
+            el.className = 'notification';
+            el.innerText = msg;
+            document.getElementById('log').prepend(el);
+        }
+
+        function connect() {
+            const userId = document.getElementById('userId').value;
+            if (socket) socket.disconnect();
+            
+            socket = io('http://localhost:3004');
+            
+            socket.on('connect', () => {
+                logMsg('Connected to server. Authenticating as ' + userId + '...');
+                socket.emit('authenticate', userId);
+            });
+
+            socket.on('notification', (data) => {
+                logMsg('RECEIVED NOTIFICATION: ' + JSON.stringify(data, null, 2));
+            });
+
+            socket.on('disconnect', () => {
+                logMsg('Disconnected from server.');
+            });
+        }
+    </script>
+</body>
+</html>

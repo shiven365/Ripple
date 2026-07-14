@@ -1,0 +1,8 @@
+{
+  "name": "ripple",
+  "version": "1.0.0",
+  "description": "Ripple Microservices Architecture",
+  "scripts": {
+    "dev:up": "node scripts/dev-up.js"
+  }
+}

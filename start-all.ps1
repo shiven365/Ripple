@@ -1,0 +1,7 @@
+Start-Process node -ArgumentList "--watch src/index.js" -WorkingDirectory ".\auth-service"
+Start-Process node -ArgumentList "--watch src/index.js" -WorkingDirectory ".\user-service"
+Start-Process node -ArgumentList "--watch src/index.js" -WorkingDirectory ".\post-service"
+Start-Process node -ArgumentList "--watch src/index.js" -WorkingDirectory ".\feed-service"
+Start-Process node -ArgumentList "--watch src/index.js" -WorkingDirectory ".\notification-service"
+Start-Process node -ArgumentList "--watch src/index.js" -WorkingDirectory ".\media-service"
+Start-Process node -ArgumentList "--watch src/index.js" -WorkingDirectory ".\api-gateway"
