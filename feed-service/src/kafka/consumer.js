@@ -17,7 +17,7 @@ const connectConsumer = async () => {
     console.log('Kafka Consumer connected and subscribed to post-events and user-events');
 
     await consumer.run({
-      eachMessage: async ({ topic, partition, message }) => {
+      eachMessage: async ({ message }) => {
         try {
           const event = JSON.parse(message.value.toString());
           console.log(`[Kafka Consumer] Received event: ${event.type}`, event);

@@ -18,7 +18,7 @@ const hashRefreshToken = async (token) => {
 const verifyRefreshToken = (token) => {
   try {
     return jwt.verify(token, JWT_SECRET);
-  } catch (err) {
+  } catch (_err) {
     return null;
   }
 };

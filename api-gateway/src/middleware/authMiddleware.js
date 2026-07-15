@@ -19,7 +19,7 @@ const verifyToken = (req, res, next) => {
     req.userId = decoded.userId;
     req.headers['x-user-id'] = decoded.userId;
     next();
-  } catch (err) {
+  } catch (_err) {
     return res.status(401).json({ error: 'Unauthorized: Invalid or expired token' });
   }
 };

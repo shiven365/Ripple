@@ -13,7 +13,7 @@ Object.entries(serviceRegistry).forEach(([pathPrefix, targetUrl]) => {
       pathRewrite: (path, req) => {
         return pathPrefix + req.url;
       },
-      onProxyReq: (proxyReq, req, res) => {
+      onProxyReq: (proxyReq, req, _res) => {
         if (req.userId) {
           proxyReq.setHeader('x-user-id', req.userId);
         }

@@ -43,7 +43,7 @@ const getOnlineUsers = (req, res) => {
   try {
     const online = getActiveUsers();
     res.json(online);
-  } catch (err) {
+  } catch (_err) {
     res.status(500).json({ error: 'Internal server error' });
   }
 };
