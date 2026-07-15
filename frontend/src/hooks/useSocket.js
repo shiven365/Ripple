@@ -9,7 +9,7 @@ export const useSocket = (userId) => {
     if (!userId) return;
 
     // Connect directly to the notification service WebSocket
-    const socket = io('http://localhost:3004');
+    const socket = io(import.meta.env.VITE_SOCKET_URL || 'http://localhost:3004');
 
     socket.on('connect', () => {
       socket.emit('authenticate', userId);

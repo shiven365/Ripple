@@ -2,10 +2,21 @@ const { Kafka } = require('kafkajs');
 const { getFollowers } = require('../clients/userServiceClient');
 const { addToFeed, trimFeed } = require('../redis/feedStore');
 
-const kafka = new Kafka({
+const kafkaConfig = {
   clientId: 'feed-service-consumer',
   brokers: [process.env.KAFKA_BROKER || 'localhost:9092'],
-});
+};
+
+if (process.env.KAFKA_USERNAME && process.env.KAFKA_PASSWORD) {
+  kafkaConfig.ssl = true;
+  kafkaConfig.sasl = {
+    mechanism: 'plain',
+    username: process.env.KAFKA_USERNAME,
+    password: process.env.KAFKA_PASSWORD
+  };
+}
+
+const kafka = new Kafka(kafkaConfig);
 
 const consumer = kafka.consumer({ groupId: 'feed-cg' });
 

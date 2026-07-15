@@ -3,10 +3,21 @@ const pool = require('../config/db');
 const { v4: uuidv4 } = require('uuid');
 const { emitToUser } = require('../websocket/socketServer');
 
-const kafka = new Kafka({
+const kafkaConfig = {
   clientId: 'notification-service-consumer',
   brokers: [process.env.KAFKA_BROKER || 'localhost:9092'],
-});
+};
+
+if (process.env.KAFKA_USERNAME && process.env.KAFKA_PASSWORD) {
+  kafkaConfig.ssl = true;
+  kafkaConfig.sasl = {
+    mechanism: 'plain',
+    username: process.env.KAFKA_USERNAME,
+    password: process.env.KAFKA_PASSWORD
+  };
+}
+
+const kafka = new Kafka(kafkaConfig);
 
 const consumer = kafka.consumer({ groupId: 'notif-cg' });
 
