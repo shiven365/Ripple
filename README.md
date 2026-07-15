@@ -21,43 +21,19 @@ You can view the live frontend interface here: **[Ripple Frontend on Vercel](htt
 
 ## 📸 Screenshots
 
-<table align="center">
-<tr>
-<td align="center">
-<img src="https://github.com/user-attachments/assets/b898ebe0-7b14-4c5f-9df0-211294237489" width="420"><br>
-<b>Home Feed</b>
-</td>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/b898ebe0-7b14-4c5f-9df0-211294237489" width="420"><br><br>
 
-<td align="center">
-<img src="https://github.com/user-attachments/assets/8afbc38e-0ab5-47ad-9e20-d0e7bb81937e" width="420"><br>
-<b>Login</b>
-</td>
-</tr>
+  <img src="https://github.com/user-attachments/assets/8afbc38e-0ab5-47ad-9e20-d0e7bb81937e" width="420"><br><br>
 
-<tr>
-<td align="center">
-<img src="https://github.com/user-attachments/assets/6247674f-2788-4b05-b1ee-a692c26b7bed" width="420"><br>
-<b>Search</b>
-</td>
+  <img src="https://github.com/user-attachments/assets/6247674f-2788-4b05-b1ee-a692c26b7bed" width="420"><br><br>
 
-<td align="center">
-<img src="https://github.com/user-attachments/assets/85d6999f-d910-4da2-af30-d8e15f165c57" width="420"><br>
-<b>Profile</b>
-</td>
-</tr>
+  <img src="https://github.com/user-attachments/assets/85d6999f-d910-4da2-af30-d8e15f165c57" width="420"><br><br>
 
-<tr>
-<td align="center">
-<img src="https://github.com/user-attachments/assets/9d89b8fc-5eb9-4153-a36a-52cad32dac6f" width="420"><br>
-<b>Notifications</b>
-</td>
+  <img src="https://github.com/user-attachments/assets/9d89b8fc-5eb9-4153-a36a-52cad32dac6f" width="420"><br><br>
 
-<td align="center">
-<img src="https://github.com/user-attachments/assets/7742b09b-c77d-4cd5-b9e9-b9166df7bebe" width="420"><br>
-<b>Create Post</b>
-</td>
-</tr>
-</table>
+  <img src="https://github.com/user-attachments/assets/7742b09b-c77d-4cd5-b9e9-b9166df7bebe" width="420">
+</p>
 ---
 
 ## 🏗️ Architecture
