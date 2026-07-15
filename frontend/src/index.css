@@ -3,6 +3,9 @@
 @theme {
   --color-brand-start: #3B82F6;
   --color-brand-end: #8B5CF6;
+  --color-brand-light: #60A5FA;
+  --color-brand-base: #3B82F6;
+  --color-brand-dark: #8B5CF6;
   --color-bg-primary: var(--bg-primary);
   --color-bg-surface: var(--bg-surface);
   --color-text-primary: var(--text-primary);

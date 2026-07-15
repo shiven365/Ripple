@@ -19,6 +19,20 @@ You can view the live frontend interface here: **[Ripple Frontend on Vercel](htt
 
 ---
 
+## 📸 Screenshots
+
+*(Add your UI screenshots to a folder like `docs/images/` and link them here to show off the app!)*
+
+| Login Page | Main Feed |
+|:---:|:---:|
+| ![Login Page](docs/images/login.png) | ![Main Feed](docs/images/feed.png) |
+
+| User Profile | Notifications |
+|:---:|:---:|
+| ![Profile Page](docs/images/profile.png) | ![Notifications](docs/images/notifications.png) |
+
+---
+
 ## 🏗️ Architecture
 
 Ripple breaks down traditional monolithic social network features into isolated, highly-specialized services that communicate asynchronously via **Apache Kafka**.
