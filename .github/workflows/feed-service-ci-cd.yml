@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'feed-service/**'
+      - '.github/workflows/feed-service-ci-cd.yml'
 
 jobs:
   test:

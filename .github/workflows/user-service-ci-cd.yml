@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'user-service/**'
+      - '.github/workflows/user-service-ci-cd.yml'
 
 jobs:
   test:

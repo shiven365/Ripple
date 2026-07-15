@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'notification-service/**'
+      - '.github/workflows/notification-service-ci-cd.yml'
 
 jobs:
   test:
