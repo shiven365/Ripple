@@ -37,20 +37,39 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Login to Docker Hub
+      - name: Check Docker Hub push scope
+        id: docker-scope
         if: env.DOCKER_USER != '' && env.DOCKER_TOKEN != ''
+        run: |
+          auth_response=$(curl -fsSL -u "${DOCKER_USER}:${DOCKER_TOKEN}" "https://auth.docker.io/token?service=registry.docker.io&scope=repository:${DOCKER_USER}/api-gateway:push,pull" || echo '{}')
+          has_push_scope=$(echo "$auth_response" | jq -r '[.access[]?.actions[]?] | any(. == "push")')
+          echo "has_push_scope=$has_push_scope" >> "$GITHUB_OUTPUT"
+
+          if [ "$has_push_scope" != "true" ]; then
+            echo "::warning::Docker Hub token cannot push ${DOCKER_USER}/api-gateway. Building image without push."
+          fi
+
+      - name: Login to Docker Hub
+        if: env.DOCKER_USER != '' && env.DOCKER_TOKEN != '' && steps.docker-scope.outputs.has_push_scope == 'true'
         uses: docker/login-action@v3
         with:
           username: ${{ env.DOCKER_USER }}
           password: ${{ env.DOCKER_TOKEN }}
           
       - name: Build and Push Docker image
-        if: env.DOCKER_USER != '' && env.DOCKER_TOKEN != ''
+        if: env.DOCKER_USER != '' && env.DOCKER_TOKEN != '' && steps.docker-scope.outputs.has_push_scope == 'true'
         uses: docker/build-push-action@v5
         with:
           context: ./api-gateway
           push: true
           tags: ${{ env.DOCKER_USER }}/api-gateway:latest
+
+      - name: Build Docker image (without push)
+        if: env.DOCKER_USER != '' && env.DOCKER_TOKEN != '' && steps.docker-scope.outputs.has_push_scope != 'true'
+        uses: docker/build-push-action@v5
+        with:
+          context: ./api-gateway
+          push: false
 
   deploy:
     needs: build-and-push
